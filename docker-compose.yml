@@ -238,6 +238,38 @@ services:
       - ventas_db_data:/var/lib/mysql
 
 
+
+  api-gateway:
+    build: ../api-gateway
+    mem_limit: 512m
+    ports:
+      - "9090:9090"
+    environment:
+      CONFIG_SERVER_URL: ${CONFIG_SERVER_URL}
+      EUREKA_URL: ${EUREKA_URL}
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9090/actuator/health"]
+      interval: 30s     
+      timeout: 10s    
+      retries: 5        
+      start_period: 60s
+    depends_on:
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+      producto-service:
+        condition: service_healthy
+      cliente-service:
+        condition: service_healthy
+      carrito-service:
+        condition: service_healthy
+      venta-service:
+        condition: service_healthy
+    networks:
+      - electrodostore-network
+
 networks:
   electrodostore-network:
     driver: bridge
