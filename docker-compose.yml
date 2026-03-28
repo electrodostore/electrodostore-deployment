@@ -7,7 +7,7 @@ services:
     environment:
       GITHUB_URL: ${GITHUB_URL}
       GITHUB_USERNAME: ${GITHUB_USERNAME}
-      GITHUB_TOCKEN: ${GITHUB_TOCKEN}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
     restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
