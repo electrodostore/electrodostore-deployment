@@ -11,13 +11,19 @@ Este proyecto implementa los principales patrones de Spring Cloud con el objetiv
 
 El sistema está compuesto por múltiples microservicios independientes, cada uno enfocado en una responsabilidad específica:
 
-- 🛍️ **producto Service** – Gestión de productos  
-- 👤 **cliente Service** – Gestión de clientes  
-- 🛒 **carrito Service** – Manejo del carrito de compras  
-- 💳 **venta Service** – Procesamiento de ventas  
-- 🌐 **API Gateway** – Punto de entrada único al sistema  
-- 🧭 **Eureka Server** – Registro y descubrimiento de servicios  
-- ⚙️ **Config Server** – Configuración centralizada  
+| Servicio | Descripción | Repo |
+|---|---|---|
+| `producto-service` | Gestión de productos | [🔗 ver repo](https://github.com/electrodostore/producto-service) |
+| `cliente-service` | Gestión de clientes | [🔗 ver repo](https://github.com/electrodostore/cliente-service) |
+| `carrito-service` | Carrito de compras | [🔗 ver repo](https://github.com/electrodostore/carrito-service) |
+| `venta-service` | Procesamiento de ventas | [🔗 ver repo](https://github.com/electrodostore/venta-service) |
+| `api-gateway` | Punto de entrada | [🔗 ver repo](https://github.com/electrodostore/api-gateway) |
+| `eureka-server` | Service Discovery | [🔗 ver repo](https://github.com/electrodostore/eureka-server) |
+| `config-server` | Config centralizada | [🔗 ver repo](https://github.com/electrodostore/config-server) |
+
+
+> 🗂️ Las configuraciones de todos los servicios se gestionan de forma
+> centralizada en un repositorio dedicado → [config-repo](https://github.com/electrodostore/electrodostore-config-server-repo)
 
 ---
 
