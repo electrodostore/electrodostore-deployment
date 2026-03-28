@@ -89,7 +89,7 @@ Ejemplo de algunas variables:
 ```bash
 GITHUB_URL=
 GITHUB_USERNAME=
-GITHUB_TOCKEN=
+GITHUB_TOKEN=
 
 CONFIG_SERVER_URL=http://config-server:8888
 EUREKA_URL=http://eureka-server:8761/eureka
