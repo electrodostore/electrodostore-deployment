@@ -40,6 +40,57 @@ services:
       - electrodostore-network
 
 
+  auth-service:
+    build: ../auth-service
+    mem_limit: 512m
+    expose:
+      - "7474"
+    environment:
+      CONFIG_SERVER_URL: ${CONFIG_SERVER_URL}
+      EUREKA_URL: ${EUREKA_URL}
+      DB_USERNAME: ${AUTH_DB_USER}
+      DB_PASSWORD: ${AUTH_DB_PASSWORD}
+      DB_URL: ${AUTH_DB_URL}
+      JWT_USER_GENERATOR: ${JWT_USER_GENERATOR}
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7474/actuator/health"]
+      interval: 30s     
+      timeout: 10s    
+      retries: 5        
+      start_period: 300s
+    depends_on:
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+      auth-db:
+        condition: service_healthy
+    networks:
+      - electrodostore-network
+
+
+  auth-db:
+    image: mysql:8.0.33 
+    mem_limit: 512m
+    environment:
+      MYSQL_ROOT_PASSWORD: ${AUTH_DB_ROOT_PASSWORD}
+      MYSQL_USER: ${AUTH_DB_USER}
+      MYSQL_PASSWORD: ${AUTH_DB_PASSWORD}
+      MYSQL_DATABASE: ${AUTH_DB_NAME}
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -p$${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    networks:
+      - electrodostore-network
+    volumes:
+      - auth_db_data:/var/lib/mysql 
+
+
+
   producto-service:
     build: ../producto-service
     mem_limit: 512m
@@ -57,7 +108,7 @@ services:
       interval: 30s     
       timeout: 10s    
       retries: 5        
-      start_period: 60s
+      start_period: 300s
     depends_on:
       config-server:
         condition: service_healthy
@@ -106,7 +157,7 @@ services:
       interval: 30s     
       timeout: 10s    
       retries: 5        
-      start_period: 60s
+      start_period: 300s
     depends_on:
       config-server:
         condition: service_healthy
@@ -155,7 +206,7 @@ services:
       interval: 30s     
       timeout: 10s    
       retries: 5        
-      start_period: 60s
+      start_period: 300s
     depends_on:
       config-server:
         condition: service_healthy
@@ -205,7 +256,7 @@ services:
       interval: 30s     
       timeout: 10s    
       retries: 5        
-      start_period: 60s
+      start_period: 300s
     depends_on:
       config-server:
         condition: service_healthy
@@ -267,6 +318,8 @@ services:
         condition: service_healthy
       venta-service:
         condition: service_healthy
+      auth-service:
+        condition: service_healthy
     networks:
       - electrodostore-network
 
@@ -280,5 +333,6 @@ volumes:
   clientes_db_data:
   carritos_db_data:
   ventas_db_data:
+  auth_db_data:
   
 
