@@ -348,19 +348,9 @@ GITHUB_TOKEN=
 docker compose up --build
 ```
 
-El despliegue iniciará:
+Resultado del despliegue:
 
-| Servicio | Tipo |
-| --- | --- |
-| Config Server | Infraestructura |
-| Eureka Server | Infraestructura |
-| Auth Service | Microservicio |
-| Producto Service | Microservicio |
-| Cliente Service | Microservicio |
-| Carrito Service | Microservicio |
-| Venta Service | Microservicio |
-| API Gateway | Infraestructura |
-| Bases de datos MySQL | Persistencia |
+<p align="center"> <img src="./docs/docker-deployment.png" alt="Docker Deployment" width="1000"/> </p>
 
 ---
 
