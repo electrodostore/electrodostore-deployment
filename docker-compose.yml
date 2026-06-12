@@ -52,6 +52,8 @@ services:
       DB_PASSWORD: ${AUTH_DB_PASSWORD}
       DB_URL: ${AUTH_DB_URL}
       JWT_USER_GENERATOR: ${JWT_USER_GENERATOR}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
     restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:7474/actuator/health"]
