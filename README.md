@@ -354,6 +354,17 @@ Resultado del despliegue:
 
 ---
 
+## 📮 Postman Collection
+
+La colección completa de endpoints y el entorno de pruebas se encuentran en:
+
+```text
+postman/
+├── Electrodostore.postman_collection.json
+└── Electrodostore.postman_environment.json
+```
+---
+
 ## 🧠 Decisiones de Arquitectura
 
 <details>
