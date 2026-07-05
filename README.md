@@ -51,8 +51,9 @@ flowchart TB
     Gateway[🌐 API Gateway]
     Cliente --> Gateway
 
-    subgraph MS[ ]
+    subgraph MS[" "]
         direction LR
+
         Auth[🔐 Auth]
         Producto[📦 Productos]
         ClienteSvc[👥 Clientes]
@@ -66,8 +67,9 @@ flowchart TB
     Gateway --> Carrito
     Gateway --> Venta
 
-    subgraph BD[ ]
+    subgraph BD[" "]
         direction LR
+
         AuthDB[(Auth DB)]
         ProductoDB[(Producto DB)]
         ClienteDB[(Cliente DB)]
